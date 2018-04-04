@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="cb2391ed-25d2-4e2f-b2fd-ca1cbb7d3715" created="2.3.0" activeEnvironment="Default environment" name="Service Automation" resourceRoot="" updated="2.3.0 2018-03-06T16:28:42Z" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:testSuite id="330e5ff7-f945-44ea-8de0-3045a7fede33" name="Library">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="cc012f81-6c54-4236-afde-f342e41eb59a" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="ReusableScripts" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="Groovy Script" id="f84d4c6b-ab8f-4615-9225-e6c35e7c3f6c">
+        <con:settings/>
+        <con:config>
+          <script>class Testing
+{
+
+def log
+def context
+def testRunner
+def Testing(log, context, testRunner)
+{
+	this.log = log
+	this.context = context
+	this.testRunner = testRunner
+
+}
+
+def DisplayMessage()
+{
+log.info "This is Reusbale Method"	
+}
+
+def CalculateSum( def a , def b)
+{
+	def c = a+ b
+	log.info c
+}
+
+}
+
+
+context.setProperty("obj", new Testing(log,context,testRunner))</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:testSuite id="8f44c7cf-3269-4eb1-b850-33ceb7129b35" name="AutomationSuite1">
+    <con:settings/>
+    <con:savedRecentRuns>1</con:savedRecentRuns>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="4c857466-d434-4975-ad90-ddbb73ed1397" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Case1" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:savedRecentRuns>1</con:savedRecentRuns>
+      <con:testStep type="groovy" name="step1" id="74f03adf-406e-4253-a92a-f3499103e1f7">
+        <con:settings/>
+        <con:config>
+          <script>def step = testRunner.testCase.testSuite.project.getTestSuiteByName("Library").getTestCaseByName("ReusableScripts").getTestStepByName("Groovy Script")
+step.run(testRunner, context)
+def myObj = context.obj
+myObj.DisplayMessage() 
+myObj.CalculateSum(10,20)</script>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>
